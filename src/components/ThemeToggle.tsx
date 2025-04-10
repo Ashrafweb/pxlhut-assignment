@@ -1,7 +1,7 @@
 "use client";
 
 import { useToggleTheme } from "@/hooks/useToggleTheme";
-import { FiSun, FiMoon } from "react-icons/fi"; // Example: Using Feather Icons
+import { FiSun, FiMoon } from "react-icons/fi";
 
 export default function ThemeToggle() {
 	const { isDark, toggleDarkMode } = useToggleTheme();
@@ -9,38 +9,32 @@ export default function ThemeToggle() {
 	return (
 		<button
 			onClick={toggleDarkMode}
-			// Base styles for the button acting as the switch track
 			className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
-				isDark ? "bg-gray-700" : "bg-yellow-400" // Track color changes with theme
+				isDark ? "bg-gray-700" : "bg-yellow-400"
 			}`}
-			role='switch' // Accessibility: identify as a switch
-			aria-checked={isDark} // Accessibility: indicate the state
-			aria-label='Toggle theme' // Accessibility: label the button
+			role='switch'
+			aria-checked={isDark}
+			aria-label='Toggle theme'
 		>
 			<span className='sr-only'>Toggle between dark and light theme</span>{" "}
-			{/* Accessibility: More descriptive text */}
-			{/* The sliding knob */}
 			<span
-				aria-hidden='true' // Hide decorative element from screen readers
-				// Base styles for the knob
+				aria-hidden='true'
 				className={`pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-					isDark ? "translate-x-5" : "translate-x-0" // Move the knob based on theme
+					isDark ? "translate-x-5" : "translate-x-0"
 				}`}
 			>
-				{/* Icon container within the knob - visible when knob is NOT moved (Light Mode) */}
 				<span
 					className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${
-						isDark ? "opacity-0" : "opacity-100" // Show Sun icon in light mode
+						isDark ? "opacity-0" : "opacity-100"
 					}`}
 					aria-hidden='true'
 				>
 					<FiSun className='h-3 w-3 text-yellow-500' />
 				</span>
 
-				{/* Icon container within the knob - visible when knob IS moved (Dark Mode) */}
 				<span
 					className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-100 ease-out ${
-						isDark ? "opacity-100" : "opacity-0" // Show Moon icon in dark mode
+						isDark ? "opacity-100" : "opacity-0"
 					}`}
 					aria-hidden='true'
 				>
